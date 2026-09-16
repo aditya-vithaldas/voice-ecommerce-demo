@@ -150,3 +150,30 @@
 @media(max-width:779px){.model-tabs{padding:7px 8px;gap:4px}.model-tabs>div{flex:1}.model-tabs>div button{flex:1;padding:7px 5px;font-size:10px}.model-tabs .metrics-mobile-toggle{display:block;font-size:10px!important;padding:5px}.metrics-panel{display:none}.metrics-panel.expanded{display:block;position:fixed;top:64px;left:auto;right:8px;bottom:8px;width:230px;max-height:none;border:1px solid #e0e1ec;border-radius:14px;background:#fffefc;box-shadow:0 8px 30px #37295520}.metrics-panel.expanded .metrics-body{display:block}}
 @media(min-width:780px){.surface-app.view-home .voice-dock{inset:62px max(20vw,180px) 0 0;width:auto;height:calc(100svh - 62px);margin:0}.surface-app:not(.view-home) .voice-dock{left:auto;right:calc(max(20vw,180px) + 20px);max-width:calc(100% - max(20vw,180px) - 40px)}}
 .conversation-cues>div{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.conversation-cues button{white-space:nowrap;flex-shrink:0}.surface-app:not(.view-home) .voice-dock{bottom:104px}
+
+/* Compact voice controls keep the product unobscured. */
+.surface-app:not(.view-home):not(.view-search) .voice-dock{width:280px;max-width:calc(100% - 32px);padding:10px 12px;border-radius:22px;background:rgb(255 255 255 / 72%);backdrop-filter:blur(6px);box-shadow:0 4px 18px #36335108}
+.surface-app:not(.view-home):not(.view-search) .voice-text p{font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+.surface-app:not(.view-home):not(.view-search) .voice-text small{display:none}
+.surface-app:not(.view-home):not(.view-search) .dock-controls{gap:10px;margin-top:8px}
+.surface-app:not(.view-home):not(.view-search) .dock-controls .orb{width:44px;height:44px;flex-shrink:0;animation:none;box-shadow:0 0 12px #a59bfb30}
+.surface-app:not(.view-home):not(.view-search) .keyboard-toggle,.surface-app:not(.view-home):not(.view-search) .audio-toggle,.transcript-toggle{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:transparent}
+.transcript-toggle{order:2}.surface-app:not(.view-home):not(.view-search) .voice-dock.transcript-open{width:320px}
+.surface-app:not(.view-home):not(.view-search) .transcript-open .voice-text{max-height:180px;overflow-y:auto;pointer-events:auto;text-align:left}
+.surface-app:not(.view-home):not(.view-search) .transcript-open .voice-text p{display:block}
+.surface-app:not(.view-home):not(.view-search) .transcript-open .voice-text small{display:block;max-height:none;font-size:11px;margin-top:6px}
+.surface-app:not(.view-home):not(.view-search) .voice-text .error{display:block}
+@media(min-width:780px){.surface-app:not(.view-home):not(.view-search) .voice-dock{max-width:calc(100% - max(20vw,180px) - 40px)}}
+
+/* Follow-up screens prioritize the answer over repeated product imagery. */
+.surface-app:is(.view-reviews,.view-attributes,.view-intro) .site-top{height:62px}
+.surface-app:is(.view-reviews,.view-attributes,.view-intro) .stage{padding-top:18px}
+.surface-app:is(.view-reviews,.view-attributes,.view-intro) .context-line{margin-bottom:16px}
+.surface-app:is(.view-reviews,.view-attributes) .mini-product{margin-bottom:18px;gap:10px}
+.surface-app:is(.view-reviews,.view-attributes) .mini-product .product-visual{width:38px;height:38px;border-radius:8px}
+.surface-app:is(.view-reviews,.view-attributes) .section-intro{margin-bottom:16px}
+.surface-app:is(.view-reviews,.view-attributes) .section-intro .eyebrow{margin-bottom:6px;font-size:10px}
+.surface-app:is(.view-reviews,.view-attributes) .section-intro h1{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.8px;margin-bottom:0}
+.review-overview{padding:16px 0;gap:22px}.review-focus .rating-big strong{font-size:48px}.review-focus .topic-chips{margin:16px 0}.review-focus .sentiment p{margin-top:10px}
+.view-intro .product-focus{grid-template-columns:minmax(160px,.55fr) 1.45fr;gap:30px;align-items:start}.view-intro .focus-photo{max-width:240px;width:100%;margin:0}.view-intro .focus-copy h1{font-size:clamp(26px,3vw,38px)}.view-intro .intro-summary{margin-top:16px}
+@media(max-width:600px){.view-intro .product-focus{grid-template-columns:76px minmax(0,1fr);gap:14px}.view-intro .focus-photo{border-radius:12px}.view-intro .focus-copy h1{font-size:24px;letter-spacing:-.6px}.view-intro .focus-copy .eyebrow{margin-bottom:6px}.view-intro .focus-price{margin-top:12px;font-size:18px;gap:12px}.review-overview{gap:14px}.surface-app:is(.view-reviews,.view-attributes,.view-intro) .stage{padding-top:12px}.review-focus .rating-big strong{font-size:40px}}
