@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import ts from 'typescript';
+import {readFileSync} from 'node:fs';
+const source=readFileSync(new URL('../lib/measurements.ts',import.meta.url),'utf8');
+const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {Measurements,calculate}=await import('data:text/javascript;base64,'+Buffer.from(compiled).toString('base64'));
+const m=new Measurements();const t=m.begin('voice','red sports shirts',1000);m.mark('speechEnd',1200,'test');m.mark('audioStart',1450,'test');m.mark('firstAction',1300,'test');m.mark('visibleAction',1400,'test');assert.equal(t.metrics.firstAudio,250);assert.equal(t.metrics.firstAction,100);assert.equal(t.metrics.visibleAction,200);assert.equal(t.metrics.bargeIn,null);
+m.outputSpeaking=true;const interruption=m.begin('voice','make it blue',1600);assert.equal(t.status,'interrupted');assert.equal(interruption.interrupted,true);m.mark('assistantYield',1660,'test');assert.equal(interruption.metrics.bargeIn,60);assert.equal(interruption.metrics.interruptionRetention,'pending');m.input('please');assert.equal(interruption.interruptionTranscript,'make it blueplease');
+const {call}=m.call('show_surface',{view:'search'},'test');m.result(interruption,call,{error:'invalid'},false);assert.equal(call.success,false);assert.equal(interruption.success,false);assert.equal(interruption.toolCalled,true);assert.ok(call.rtt>=0);
+const oldId=m.sessionId;m.switch('gemini-3.8-live');assert.equal(interruption.status,'switched');assert.notEqual(m.sessionId,oldId);assert.equal(m.turns.length,2);const next=m.begin('voice','jackets');assert.equal(next.model,'gemini-3.8-live');assert.equal(t.model,'gpt-live-1');assert.equal(next.metrics.firstAudio,null);
+const raw=structuredClone(t);raw.raw.audioStart.at=1100;assert.equal(calculate(raw).firstAudio,-100,'overlap is preserved rather than clamped');
+console.log('PASS timing, missing values, interruptions, failed tools, model isolation, session IDs, overlap');
