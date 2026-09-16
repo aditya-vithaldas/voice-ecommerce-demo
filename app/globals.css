@@ -177,3 +177,10 @@
 .review-overview{padding:16px 0;gap:22px}.review-focus .rating-big strong{font-size:48px}.review-focus .topic-chips{margin:16px 0}.review-focus .sentiment p{margin-top:10px}
 .view-intro .product-focus{grid-template-columns:minmax(160px,.55fr) 1.45fr;gap:30px;align-items:start}.view-intro .focus-photo{max-width:240px;width:100%;margin:0}.view-intro .focus-copy h1{font-size:clamp(26px,3vw,38px)}.view-intro .intro-summary{margin-top:16px}
 @media(max-width:600px){.view-intro .product-focus{grid-template-columns:76px minmax(0,1fr);gap:14px}.view-intro .focus-photo{border-radius:12px}.view-intro .focus-copy h1{font-size:24px;letter-spacing:-.6px}.view-intro .focus-copy .eyebrow{margin-bottom:6px}.view-intro .focus-price{margin-top:12px;font-size:18px;gap:12px}.review-overview{gap:14px}.surface-app:is(.view-reviews,.view-attributes,.view-intro) .stage{padding-top:12px}.review-focus .rating-big strong{font-size:40px}}
+
+/* Center the orb itself in the usable canvas, independent of caption height. */
+.surface-app.view-home .voice-dock{inset:62px 0 100px; width:auto;height:auto;margin:0;padding:0;overflow:visible;display:block;transform:none}
+.surface-app.view-home .dock-controls{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;width:220px;height:210px;display:flex;align-items:center;justify-content:center}
+.surface-app.view-home .voice-text{position:absolute;left:50%;top:calc(50% + 100px);transform:translateX(-50%);text-align:center}
+@media(min-width:780px){.surface-app.view-home .voice-dock{right:max(20vw,180px)}}
+@media(max-height:500px){.surface-app.view-home .dock-controls{height:140px}.surface-app.view-home .dock-controls .orb{width:96px;height:96px}.surface-app.view-home .voice-text{top:calc(50% + 72px)}.surface-app.view-home .voice-text .home-heading{font-size:20px}}
