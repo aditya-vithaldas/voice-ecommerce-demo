@@ -2,7 +2,7 @@ import {env} from 'cloudflare:workers';
 import {products,type Product} from '@/lib/catalog';
 
 type ScoreAnswer={type:'score';score:number;confidence:number;probabilities:Record<string,number>};
-const allowedDimensions=['sports','durability','comfort','breathability','value','style','rain protection','warmth','easy care','fit'] as const;
+const allowedDimensions=['running','sports','durability','comfort','breathability','value','style','rain protection','warmth','easy care','fit'] as const;
 
 function publicProduct(p:Product){
  return {id:p.id,name:p.name,brand:p.brand,category:p.category,color:p.color,price:p.price,ageRange:`${p.ageMin}–${p.ageMax}`,sleeve:p.sleeve,intro:p.intro,attributes:p.attributes,catalogScores:p.scores,reviews:p.reviews};
